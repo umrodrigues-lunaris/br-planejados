@@ -1,0 +1,219 @@
+.section {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--color-ink) 0%, #0e0d0a 50%, var(--color-ink) 100%);
+  padding: 7rem 2rem 7.5rem;
+  border-top: 1px solid var(--hairline);
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 980px);
+  height: 680px;
+  background: radial-gradient(ellipse, rgba(217, 165, 52, 0.16), transparent 65%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.6rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-primary-2);
+  margin-bottom: 0.9rem;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 42px;
+    height: 2px;
+    background: var(--color-primary);
+  }
+}
+
+.title {
+  font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.8);
+}
+
+.lead {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.showcase {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+.item {
+  &:nth-child(even) {
+    @media (min-width: 900px) {
+      margin-top: 3.2rem;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  width: min(86vw, 360px);
+  border-radius: 14px;
+  overflow: visible;
+  transition: transform 0.45s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+
+    .frame {
+      opacity: 1;
+      transform: translate(14px, 14px);
+    }
+
+    .video {
+      box-shadow: 0 40px 90px rgba(217, 165, 52, 0.22);
+      border-color: rgba(217, 165, 52, 0.55);
+    }
+  }
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(217, 165, 52, 0.5);
+  border-radius: 14px;
+  transform: translate(10px, 10px);
+  opacity: 0.6;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #000;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.15), rgba(10, 10, 12, 0.55));
+  cursor: pointer;
+  transition: background 0.35s ease;
+
+  &:hover {
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.05), rgba(10, 10, 12, 0.45));
+
+    .playButton {
+      transform: scale(1.12);
+      background: var(--color-primary-2);
+      box-shadow: 0 0 0 16px rgba(217, 165, 52, 0.2), 0 0 60px rgba(217, 165, 52, 0.45);
+    }
+  }
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #16130a;
+  font-size: 1.8rem;
+  box-shadow: 0 0 0 12px rgba(217, 165, 52, 0.16), 0 0 40px rgba(217, 165, 52, 0.3);
+  transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  animation: pulse 2.6s ease-in-out infinite;
+
+  svg {
+    margin-left: 4px;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 10px rgba(217, 165, 52, 0.18), 0 0 40px rgba(217, 165, 52, 0.3); }
+  50% { box-shadow: 0 0 0 20px rgba(217, 165, 52, 0.06), 0 0 60px rgba(217, 165, 52, 0.4); }
+}
+
+.soundChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  svg {
+    color: var(--color-primary-2);
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4.5rem 1.25rem 5rem;
+  }
+
+  .playButton {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+  }
+}

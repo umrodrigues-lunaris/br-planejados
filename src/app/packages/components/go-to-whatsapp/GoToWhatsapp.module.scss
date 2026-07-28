@@ -1,16 +1,16 @@
 .container {
     position: fixed;
-    right: 0.5rem; 
-    bottom: 1.3rem; 
+    right: 1rem;
+    bottom: 1.3rem;
     z-index: 100;
 }
 
 .button {
     cursor: pointer;
     border-radius: 50%;
-    border: 1px solid #ffffff;
-    background: #25d366; 
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border: none;
+    background: #25d366;
+    box-shadow: 0 10px 26px rgba(37, 211, 102, 0.35);
     padding: 12px;
 
     display: flex;
@@ -19,51 +19,26 @@
 
     width: 56px;
     height: 56px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 14px 32px rgba(37, 211, 102, 0.45);
+    }
 
     svg {
-    width: 24px;
-    height: 24px;
-    fill: #ffffff; 
+    width: 26px;
+    height: 26px;
+    fill: #ffffff;
     }
 
     @media screen and (max-width: 768px) {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
 
     svg {
-        width: 20px;
-        height: 20px;
-    }
-    }
-
-    @media screen and (max-width: 480px) {
-    width: 44px;
-    height: 44px;
-
-    svg {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
     }
     }
 }
-
-.message {
-    position: absolute;
-    right: calc(100% + 0.5rem); 
-    bottom: 50%; 
-    transform: translateY(50%);
-    padding: 0.75rem 1rem; 
-    background-color: #ffffff; 
-    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1); 
-    border-radius: 0.75rem; 
-    font-size: 0.9rem;
-    white-space: nowrap; 
-    z-index: 99; 
-    cursor: pointer;
-    display: none; 
-
-    @media screen and (min-width: 769px) {
-    display: block; 
-    }
-}
-

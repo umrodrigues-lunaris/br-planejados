@@ -6,8 +6,11 @@ import { motion } from 'framer-motion'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import { useEffect, useState } from 'react'
+import { FiMaximize2 } from 'react-icons/fi'
 
 type MidiaItem = { type: 'image'; src: string; alt?: string }
+
+const ordemProjetos = [15, 17, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1, 16, 2, 18, 19, 20]
 
 export default function Servicos() {
   const [servicos, setServicos] = useState<{ midia: MidiaItem[] }[]>([])
@@ -15,8 +18,6 @@ export default function Servicos() {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalImages, setModalImages] = useState<MidiaItem[]>([])
   const [modalIndex, setModalIndex] = useState(0)
-
-  const ordemProjetos = [15, 17, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1, 16, 2, 18, 19, 20]
 
   useEffect(() => {
     let mounted = true
@@ -71,26 +72,47 @@ export default function Servicos() {
 
   return (
     <section className={styles.servicos} id="servicos">
-      <motion.h2 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-        NOSSOS SERVIÇOS
-      </motion.h2>
-      <div className={styles.grid}>
-        {loading
-          ? Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className={styles.shimmer}></div>
-            ))
-          : servicos.map((servico, index) => (
-              <motion.div
-                key={index}
-                className={styles.card}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <ServicoCarousel midia={servico.midia} onClick={(i) => openModal(servico.midia, i)} />
-              </motion.div>
-            ))}
+      <div className={styles.inner}>
+        <motion.div
+          className={styles.head}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div>
+            <span className={styles.eyebrow}>Portfólio</span>
+            <h2 className={styles.title}>
+              Projetos que <span className={styles.outline}>assinam</span> o ambiente
+            </h2>
+          </div>
+          <p className={styles.lead}>
+            Cozinhas, dormitórios, home offices e áreas gourmet executados
+            com precisão milimétrica. Clique para explorar cada projeto.
+          </p>
+        </motion.div>
+
+        <div className={styles.grid}>
+          {loading
+            ? Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className={styles.shimmer}></div>
+              ))
+            : servicos.map((servico, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.card}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={{ once: true, margin: '-40px' }}
+                >
+                  <span className={styles.cardHint} aria-label="Ver projeto">
+                    <FiMaximize2 />
+                  </span>
+                  <ServicoCarousel midia={servico.midia} onClick={(i) => openModal(servico.midia, i)} />
+                </motion.div>
+              ))}
+        </div>
       </div>
 
       {modalOpen && (

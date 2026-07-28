@@ -18,9 +18,6 @@ export const GoToWhatsapp = () => {
       >
         <AiOutlineWhatsApp />
       </button>
-      <div className={styles.message} onClick={handleClick}>
-        Clique aqui para conversar conosco via WhatsApp!
-      </div>
     </div>
   );
 };

@@ -6,17 +6,19 @@ import { GoToWhatsapp } from './packages/components/go-to-whatsapp/go-to-whatsap
 import { BackToTopButton } from './packages/components/back-to-top/back-to-top-button';
 import Banner from './packages/components/banner/banner';
 import Servicos from './packages/components/servicos/servicos';
+import VideosSection from './packages/components/videos/videos-section';
+
 export default function Home() {
   return (
     <>
-    <Header />
-    <Banner />
-    <Servicos />
-    <AboutSection/> 
-    <GoToWhatsapp />
-    <BackToTopButton />
-    <Footer />
+      <Header />
+      <Banner />
+      <Servicos />
+      <VideosSection />
+      <AboutSection />
+      <GoToWhatsapp />
+      <BackToTopButton />
+      <Footer />
     </>
-
   );
 }
