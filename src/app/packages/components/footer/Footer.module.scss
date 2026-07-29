@@ -141,4 +141,8 @@
   .footer {
     padding: 4.5rem 1.25rem 2rem;
   }
+
+  .headline {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+  }
 }

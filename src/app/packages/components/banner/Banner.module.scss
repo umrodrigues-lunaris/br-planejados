@@ -217,6 +217,10 @@
     padding: 8rem 1.25rem 4.5rem;
   }
 
+  .title {
+    font-size: clamp(1.6rem, 8.5vw, 3.4rem);
+  }
+
   .actions {
     margin-bottom: 2.4rem;
 
